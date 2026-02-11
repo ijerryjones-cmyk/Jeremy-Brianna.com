@@ -16,28 +16,39 @@
     <!-- Custom Styles -->
     <link href="styles.css" rel="stylesheet">
     <style>
+        /* 1. The Container */
         .rsvp-container {
             position: relative;
             width: 100%;
             overflow: hidden;
-            padding-top: 100%; /* Aspect ratio for mobile */
+            /* Mobile height: 150% or 80vh ensures they see more of the form */
+            padding-top: 150%; 
         }
-
+    
+        /* 2. Desktop Adjustments */
         @media (min-width: 768px) {
             .rsvp-container {
-                padding-top: 1200px; /* Fixed height for desktop */
+                /* On desktop, we switch from a percentage to a fixed pixel height */
+                padding-top: 0;
+                height: 1000px; 
             }
         }
-
+    
+        /* 3. The Iframe itself */
         .rsvp-iframe {
             position: absolute;
             top: 0;
             left: 0;
-            bottom: 0;
-            right: 0;
             width: 100%;
             height: 100%;
             border: none;
+        }
+        
+        /* Optional: Remove extra padding on small screens to give the form more room */
+        @media (max-width: 576px) {
+            .section-padding {
+                padding: 40px 10px;
+            }
         }
     </style>
 </head>
@@ -87,7 +98,7 @@
                 <h2>Kindly Respond</h2>
                 <p>Please fill out the form below to RSVP</p>
             </div>
-
+            <p class="text-center">We also have more information available here on our site, on different pages that we will keep updated as we get closer to the event.</p>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="bg-white p-2 rounded shadow-sm">
@@ -97,7 +108,6 @@
                     </div>
 
                     <div class="text-center mt-5">
-                        <p class="text-muted">We also have more information available here on our site, on different pages that we will keep updated as we get closer to the event.</p>
                     </div>
                 </div>
             </div>
