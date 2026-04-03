@@ -54,14 +54,31 @@ h1, h2, h3, h4, h5, h6 {
     height: 100vh;
     min-height: 600px;
     background-image: url('assets/Proposal.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    /* Hide native background rendering to use pseudo-element for parallax */
+    background-size: 0 0 !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important; 
+    
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: inherit; /* INHERITS the background image from parent! */
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    pointer-events: none;
+    will-change: transform;
 }
 
 .hero-overlay {
@@ -259,10 +276,6 @@ footer {
 
 /* Responsive */
 @media (max-width: 767px) {
-    .hero-section {
-        background-attachment: scroll; /* Fixes iOS Safari background zoom bug */
-    }
-
     .timeline::after {
         left: 31px;
     }
