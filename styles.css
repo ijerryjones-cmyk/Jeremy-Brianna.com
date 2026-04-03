@@ -259,6 +259,10 @@ footer {
 
 /* Responsive */
 @media (max-width: 767px) {
+    .hero-section {
+        background-attachment: scroll; /* Fixes iOS Safari background zoom bug */
+    }
+
     .timeline::after {
         left: 31px;
     }
